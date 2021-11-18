@@ -1,20 +1,25 @@
+import './app/layout/main';
 import './styles.scss';
 import last from './app/utils/last';
+import { profile } from './app/pages/profile';
+import { auth } from './app/pages/auth';
+import { registration } from './app/pages/registration';
+import { serverError } from './app/pages/server-error';
+import { chatPage } from './app/pages/chat-page';
+import { clientError } from './app/pages/client-error';
 
-(async function () {
-  await import('./app/layout/main');
+const $pageWrapper = document.querySelector('#page-wrapper');
 
-  if (last(document.location.href.split('/')) === ('profile')) {
-    import('./app/pages/profile');
-  } else if (last(document.location.href.split('/')) === 'auth' || document.location.href === 'http://localhost:3000/') {
-    import('./app/pages/auth');
-  } else if (last(document.location.href.split('/')) === 'registration') {
-    import('./app/pages/registration');
-  } else if (last(document.location.href.split('/')) === 'server-error') {
-    import('./app/pages/server-error');
-  } else if (last(document.location.href.split('/')) === 'chat-page') {
-    import('./app/pages/chat-page');
-  } else {
-    import('./app/pages/client-error');
-  }
-}());
+if (last(document.location.href.split('/')) === ('profile')) {
+  $pageWrapper.innerHTML = profile;
+} else if (last(document.location.href.split('/')) === 'auth' || document.location.href === 'http://localhost:3000/') {
+  $pageWrapper.innerHTML = auth;
+} else if (last(document.location.href.split('/')) === 'registration') {
+  $pageWrapper.innerHTML = registration;
+} else if (last(document.location.href.split('/')) === 'server-error') {
+  $pageWrapper.innerHTML = serverError;
+} else if (last(document.location.href.split('/')) === 'chat-page') {
+  $pageWrapper.innerHTML = chatPage;
+} else {
+  $pageWrapper.innerHTML = clientError;
+}

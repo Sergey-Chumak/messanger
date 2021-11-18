@@ -1,4 +1,4 @@
-import Handlebars from 'handlebars';
+import Handlebars from 'handlebars/dist/handlebars';
 import { tmpl } from './registration.tmpl';
 import { input } from '../../components/ui/input';
 import { button } from '../../components/ui/button';
@@ -59,14 +59,13 @@ Handlebars.registerPartial('submitBtn', button({
   color: 'secondary',
 }));
 
-const $pageWrapper = document.querySelector('#page-wrapper');
-$pageWrapper.innerHTML = Handlebars.compile(tmpl)({});
+export const registration = Handlebars.compile(tmpl)({});
 
 new Promise((resolve) => {
   resolve();
 }).then(() => {
   document.querySelector('#registration-btn')
-    .addEventListener('click', () => {
+    ?.addEventListener('click', () => {
       document.location.href = 'chat-page';
     });
 });

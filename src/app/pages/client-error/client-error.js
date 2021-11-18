@@ -1,5 +1,4 @@
-import Handlebars from 'handlebars';
+import Handlebars from 'handlebars/dist/handlebars';
 import { tmpl } from './client-error.tmpl';
 
-const $pageWrapper = document.querySelector('#page-wrapper');
-$pageWrapper.innerHTML = Handlebars.compile(tmpl)({});
+export const clientError = Handlebars.compile(tmpl)({});

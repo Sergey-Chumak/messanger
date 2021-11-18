@@ -1,4 +1,4 @@
-import Handlebars from 'handlebars';
+import Handlebars from 'handlebars/dist/handlebars';
 import { tmpl } from './profile.tmpl';
 import { button } from '../../components/ui/button';
 
@@ -31,13 +31,15 @@ Handlebars.registerPartial('savePassBtn', button({
   id: 'profile-save-pass-button',
 }));
 
+export const profile = Handlebars.compile(tmpl)(context);
 const $pageWrapper = document.querySelector('#page-wrapper');
-$pageWrapper.innerHTML = Handlebars.compile(tmpl)(context);
 
 new Promise((resolve) => {
   resolve();
 }).then(() => {
-  initHandlers();
+  if (document.location.href.includes('profile')) {
+    initHandlers();
+  }
 });
 
 function initHandlers() {

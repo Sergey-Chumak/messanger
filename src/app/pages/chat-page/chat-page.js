@@ -1,4 +1,4 @@
-import Handlebars from 'handlebars';
+import Handlebars from 'handlebars/dist/handlebars';
 import { tmpl } from './chat-page.tmpl';
 import { chatList } from '../../components/chat-list';
 import { chat } from '../../components/chat';
@@ -9,5 +9,5 @@ Handlebars.registerPartial('chatList', chatList({ class: 'chat__chat-list' }));
 Handlebars.registerPartial('chat', chat({ class: 'chat__dialog' }));
 
 Handlebars.registerPartial('plugDialog', plugDialog({}));
-const $pageWrapper = document.querySelector('#page-wrapper');
-$pageWrapper.innerHTML = Handlebars.compile(tmpl)({});
+
+export const chatPage = Handlebars.compile(tmpl)({});
