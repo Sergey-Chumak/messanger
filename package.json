@@ -2,7 +2,7 @@
   "name": "messenger",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.html",
+  "main": "src/index.js",
   "scripts": {
     "start": "parcel src/index.html --open --port 3000 --cache-dir build/cache",
     "build": "parcel build src/index.html"
