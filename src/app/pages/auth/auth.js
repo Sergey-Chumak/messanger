@@ -1,4 +1,4 @@
-import Handlebars from 'handlebars';
+import Handlebars from 'handlebars/dist/handlebars';
 import { tmpl } from './auth.tmpl';
 import { input } from '../../components/ui/input';
 import { button } from '../../components/ui/button';
@@ -28,14 +28,13 @@ Handlebars.registerPartial('submitBtn', button({
   id: 'auth-btn',
 }));
 
-const $pageWrapper = document.querySelector('#page-wrapper');
-$pageWrapper.innerHTML = Handlebars.compile(tmpl)({});
+export const auth = Handlebars.compile(tmpl)({});
 
 new Promise((resolve) => {
   resolve();
 }).then(() => {
   document.querySelector('#auth-btn')
-    .addEventListener('click', () => {
+    ?.addEventListener('click', () => {
       document.location.href = 'chat-page';
     });
 });
